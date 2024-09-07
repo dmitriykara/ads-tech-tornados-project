@@ -115,7 +115,7 @@ The "Load Balancer with Service Turn-Off" project aims to enhance the functional
 
     Ensure high availability and fault tolerance within the scaling service itself to prevent outages or scaling mishaps.
 
-7. Complexity:
+7. Complexity
 
     The service should aim to minimize complexity to avoid steep learning curves for users integrating it into their environments.
 
