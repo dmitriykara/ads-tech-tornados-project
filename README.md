@@ -16,21 +16,17 @@ The "Load Balancer with Service Turn-Off" project aims to enhance the functional
 
     Require efficient and scalable infrastructure to deploy and manage model training and inference tasks.
 
-3. System Administrators
+3. Service Reliability Engineers
 
-    Oversee the underlying infrastructure and ensure optimal resource allocation and utilization.
+    Oversee the underlying infrastructure and ensure optimal resource allocation and utilization, observe core service availability and performance metrics.
 
 4. Cloud Service Providers
 
-    Provide the necessary infrastructure and want to offer value-added services to improve customer satisfaction.
+    Provide the necessary infrastructure and want to offer cutting-edge PaaS system for load balancing.
 
-5. Product Managers
+5. End Users
 
-    Aim to optimize costs and improve performance for applications running on the Kubernetes infrastructure.
-
-6. End Users
-
-    Benefit from improved performance and reduced latency of the applications they use.
+    Benefit from improved performance, resource utilization and reduced latency of the applications they use.
 
 ## Expected Needs
 
@@ -50,18 +46,14 @@ The "Load Balancer with Service Turn-Off" project aims to enhance the functional
 
     Seamlessly integrate with existing Kubernetes environments without requiring significant configuration changes.
 
-5. Reliability
-
-    Highly reliable scaling mechanisms that react appropriately to real-time monitoring events.
-
-6. Security
+5. Security
 
     Ensure that the scaling service does not introduce vulnerabilities to the deployment.
 
 
 ## Features
 
-1. Zero-Single Scaling
+1. Zero Scaling
 
     Allow applications to scale down to zero instances when not in use and automatically scale up when required.
 
@@ -79,11 +71,11 @@ The "Load Balancer with Service Turn-Off" project aims to enhance the functional
 
 5. Dashboards and Alerts
 
-    Provide user-friendly dashboards to visualize scaling events and performance metrics, and set up alerts for critical events.
+    Provide user-friendly dashboards to visualize events and performance metrics, and set up alerts for critical events.
 
 6. Automata-Based Policy Engine
 
-    Implement a robust policy engine to define scaling rules using complex automata, providing flexibility and precision.
+    Deploy a sophisticated policy engine employing complex automata for precise and customizable scaling rules.
 
 7. API for Customization
 
@@ -109,14 +101,13 @@ The "Load Balancer with Service Turn-Off" project aims to enhance the functional
 
 5. Resource Limits
 
-    Operate within the constraints of available computational resources and quotas set by cloud providers.
+    Operate within the constraints of available computational resources and quotas set by end users.
 
 6. Reliability
 
-    Ensure high availability and fault tolerance within the scaling service itself to prevent outages or scaling mishaps.
+    Ensure high availability and fault tolerance within the scaling service itself to prevent outages or scaling issues.
 
 7. Complexity
 
-    The service should aim to minimize complexity to avoid steep learning curves for users integrating it into their environments.
+    The service should strive to reduce operational complexity, ensuring it remains accessible to users without significant management overhead.
 
-    This structure provides a comprehensive framework for implementing a load balancing service with the ability to scale applications to zero instances, tailored for environments requiring efficient resource management and rapid scaling capabilities, particularly in the context of ML applications.
