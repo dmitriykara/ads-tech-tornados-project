@@ -1,4 +1,4 @@
-LMS Advanced Software Design project
+Load Balancer with Service Turn-Off project
 
 Summary
 
