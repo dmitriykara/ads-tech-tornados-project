@@ -112,5 +112,5 @@ The "Load Balancer with Service Turn-Off" project aims to enhance the functional
     The service should strive to reduce operational complexity, ensuring it remains accessible to users without significant management overhead.
 
 
-# Task 2. Presentation
+# Task 3. Presentation
 https://docs.google.com/presentation/d/1IaeXMkLVIqLq7L1JCghJjV8ALhiMkqwj1jUcEOtdsyg/edit?usp=sharing
