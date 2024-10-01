@@ -18,6 +18,10 @@
 
 **Instance:** A running copy of an application.
 
+**Kubelet:** A primary "node agent", that stores and manages meta-information  about nodes.
+
+**Kube-Proxy:** An agent that runs on each node and manages network connections on low level.
+
 **Kubernetes (k8s):** An open-source system for automating deployment, scaling, and management of containerized applications.
 
 **Load balancer:** A device or software that implements balancing feature to ensure high availability and performance.
