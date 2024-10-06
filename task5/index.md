@@ -19,6 +19,8 @@
 
 ### Class diagram brief description
 
+[Link to class diagram](https://drive.google.com/file/d/1uZnKI4C8L5o2sd2wmaLDSjnipEQ8TWfj/view?usp=sharing)
+
 The UML class diagram depicts a comprehensive design for a project focusing on load balancing with service turn-off features. Here’s a detailed description of the components and their interactions.
 
 **N.B.** It is important, that all key components of the system (first of all `PolicyController`) use kubernetes `ConfigMap` format for specification configuration.
