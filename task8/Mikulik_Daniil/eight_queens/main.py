@@ -1,12 +1,12 @@
 def pipe(*functions):
     def apply_pipe(data):
         for function in functions:
-            data = function(data) if data is not None else function()
+            data = function(data)
         return data
     return apply_pipe
 
 
-def queens():
+def queens(data):
     yield from place_queen(0, [])
 
 
