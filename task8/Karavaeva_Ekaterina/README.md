@@ -2,6 +2,8 @@
 Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.google/ and upload the file.
 
 ## Comparison with the work of Dmitry Kara
+
+### Problem A. Key Word in Context (KWIC)
 | **Criteria**                           | **Pipes-and-Filters (KWIC)**                         | **Abstract Data Types Solution (KWIC)**                                   |
 |----------------------------------------|---------------------------------------------------------------------|---------------------------------------------------------------------------|
 | **Ease of changing implementation**    | Moderate: Functions (or "filters") are modular, allowing changes to individual steps, but changes to data flow require multiple adjustments. | High: The class-based design with specific methods allows localized changes, making it easier to adapt individual components. |
@@ -10,7 +12,7 @@ Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.goo
 | **Performance**                        | Moderate: Data passes sequentially through filters, which may introduce redundancy and extra processing time on large inputs. | High: Encapsulated class methods improve efficiency and reduce redundancy, supporting better scalability. |
 | **Reusability for similar problems**   | High: Modular filter-based design is highly adaptable to other pipeline-based text processing tasks. | Moderate: Class-based structure is reusable but may need substantial adaptation for different applications. |
 
-
+### Problem B. Eight Queens (8Q)
 | Criteria                           | Pipes-and-Filters (8Q)                             | Main/Subroutine with Stepwise Refinement  (8Q)      |
 |------------------------------------|------------------------------------------------|-------------------------------------------------|
 | **Ease of changing implementation algorithm** | Moderate: Modules are loosely coupled, but changes in data flow require significant refactoring. | Low: Algorithm changes require updates across several functions, making adaptation complex. |
