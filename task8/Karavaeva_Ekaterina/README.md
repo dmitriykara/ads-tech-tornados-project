@@ -4,7 +4,7 @@ Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.goo
 ## Comparison with the work of Dmitry Kara
 
 ### Problem A. Key Word in Context (KWIC)
-| **Criteria**                           | **Pipes-and-Filters (KWIC)**                         | **Abstract Data Types Solution (KWIC)**                                   |
+| **Criteria**                           | **Pipes-and-Filters (KWIC)**                         | **Abstract Data Types  (KWIC)**                                   |
 |----------------------------------------|---------------------------------------------------------------------|---------------------------------------------------------------------------|
 | **Ease of changing implementation**    | Moderate: Functions (or "filters") are modular, allowing changes to individual steps, but changes to data flow require multiple adjustments. | High: The class-based design with specific methods allows localized changes, making it easier to adapt individual components. |
 | **Ease of changing data representation** | High: Filters can be adjusted or replaced to handle different data representations without impacting the entire flow. | Moderate: The data representation is embedded in class attributes, so changes require updates in multiple methods, but classes contain the impact. |
@@ -23,7 +23,10 @@ Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.goo
 
 
 ## Comparison with the work of Dumkin Nikita
-| Criteria                           | Abstract Data Types                              | Implicit Invocation                            |
+
+
+### Problem A. Key Word in Context (KWIC)
+| Criteria                           | Abstract Data Types     (KWIC)                         | Implicit Invocation    (KWIC)                        |
 |------------------------------------|-------------------------------------------------|------------------------------------------------|
 | **Ease of changing implementation algorithm** | Moderate: Requires modifying class methods, but overall structure remains intact. | High: New event handlers can be added or modified with minimal effort. |
 | **Ease of changing data representation** | Moderate: Changes in data representation require updates to class methods but retain overall structure. | High: Changes can be easily managed through event notifications without affecting core logic. |
