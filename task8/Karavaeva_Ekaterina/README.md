@@ -34,3 +34,13 @@ Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.goo
 | **Performance**                   | Moderate: Efficiency is dependent on class design and method interactions. | Moderate: Event-driven mechanisms may introduce some overhead but can optimize performance through decoupled components. |
 | **Reusability for similar problems** | Moderate: While somewhat reusable, the approach is tied closely to the specific implementation. | High: The modular design facilitates reuse across different contexts by simply modifying event triggers and handlers. |
 
+
+### Problem B. Eight Queens (8Q)
+| Criteria                           | Pipes-and-Filters (8Q)                          | Main/Subroutine with Stepwise Refinement (8Q) |
+|------------------------------------|-------------------------------------------------|-------------------------------------------------|
+| **Ease of changing implementation algorithm** | Moderate: Modules are loosely coupled, but changes in data flow require significant refactoring. | Low: Algorithm changes require updates across several functions, making adaptation complex. |
+| **Ease of changing data representation** | High: Filters can be modified or swapped to change data representation with minimal impact on other components. | Low: Data changes need to be accounted for across multiple functions, reducing flexibility. |
+| **Ease of adding additional functions** | High: New functions can be added as independent filters without impacting existing ones. | Low: Adding new features requires integrating them into the main flow, often restructuring existing functions. |
+| **Performance**                   | Moderate: Data copying between stages can impact performance, though parallelization is possible. | High: Direct control of function calls leads to efficient execution with minimal overhead. |
+| **Reusability for similar problems** | High: Modular and filter-based design makes the approach highly adaptable to similar problems. | Low: Code is closely tailored to this specific problem, making it harder to adapt for other uses. |
+
