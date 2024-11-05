@@ -22,5 +22,12 @@ Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.goo
 | **Reusability for similar problems** | High: Modular and filter-based design makes the approach highly adaptable to similar problems. | Low: Code is closely tailored to this specific problem, making it harder to adapt for other uses. |
 
 
-## Comparison with the work of Mikulik Daniil
+## Comparison with the work of Dumkin Nikita
+| Criteria                           | Abstract Data Types                              | Implicit Invocation                            |
+|------------------------------------|-------------------------------------------------|------------------------------------------------|
+| **Ease of changing implementation algorithm** | Moderate: Requires modifying class methods, but overall structure remains intact. | High: New event handlers can be added or modified with minimal effort. |
+| **Ease of changing data representation** | Moderate: Changes in data representation require updates to class methods but retain overall structure. | High: Changes can be easily managed through event notifications without affecting core logic. |
+| **Ease of adding additional functions** | Low: Adding new features often requires integrating them into the existing class hierarchy. | High: New functionalities can be added as new events or subscribers without altering existing code. |
+| **Performance**                   | Moderate: Efficiency is dependent on class design and method interactions. | Moderate: Event-driven mechanisms may introduce some overhead but can optimize performance through decoupled components. |
+| **Reusability for similar problems** | Moderate: While somewhat reusable, the approach is tied closely to the specific implementation. | High: The modular design facilitates reuse across different contexts by simply modifying event triggers and handlers. |
 
