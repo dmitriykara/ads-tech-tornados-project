@@ -55,4 +55,24 @@ The chosen method satisfies project requirements, focusing on decomposition into
 
 ### Comparison Tables
 
-ToDo
+#### Problem A: KWIC (Key Word in Context)
+
+| **Criteria**                                | **Pipes-and-Filters**        | **Abstract Data Types**     | **Main/Subroutine**        | **Implicit Invocation**   |
+|---------------------------------------------|------------------------------|-----------------------------|----------------------------|---------------------------|
+| **Ease of changing implementation algorithm** | Moderate: Modules are loosely coupled but require significant refactoring if data flow changes | Moderate: Requires changing method implementations but overall structure remains intact | Low: Algorithm changes need updates in several functions, making it less adaptable | High: Event handlers can be added or modified with minimal effort |
+| **Ease of changing data representation**      | High: Easy to add filters or change representation at any stage | Moderate: Representation changes require updating related class methods | Low: Data changes require updates across functions, reducing flexibility | High: Data changes easily handled by updating event listeners |
+| **Ease of adding additional functions**       | High: New functions can be added as separate filters | Low: New functions require integrating into the object hierarchy | Low: New features require restructuring existing functions | High: New event handlers can be added easily |
+| **Performance**                               | Moderate: Data copying between stages can impact performance | High: Efficient, but performance depends on class design | High: Efficient with a clear flow of execution | Moderate: Potential overhead from event-driven mechanisms |
+| **Reusability for similar problems**          | High: Modular design makes it adaptable | Moderate: Somewhat reusable but tied to specific implementations | Low: Designed specifically for this problem, hard to adapt | High: Easily reusable by modifying event triggers and listeners |
+
+---
+
+#### Problem B: Eight Queens
+
+| **Criteria**                                | **Pipes-and-Filters**        | **Abstract Data Types**     | **Main/Subroutine**        | **Implicit Invocation**   |
+|---------------------------------------------|------------------------------|-----------------------------|----------------------------|---------------------------|
+| **Ease of changing implementation algorithm** | Low: Unsuitable for recursive problems, hard to modify | Moderate: Algorithm updates require structural changes | High: Easy to modify or extend the algorithm, e.g., adding more constraints | Moderate: Changes require updating event handlers, which can be manageable |
+| **Ease of changing data representation**      | Low: Poor fit for board representation | Moderate: Changes require updating related methods and attributes | Moderate: Board representation can be changed with minor updates to safety checks | Low: Limited flexibility as event-driven updates are not optimal for this problem |
+| **Ease of adding additional functions**       | Low: Difficult to add features like visualizations | Moderate: Possible but requires integrating into class structure | High: Additional features like visualizations can be added easily | Moderate: Additional event handlers possible but may introduce complexity |
+| **Performance**                               | Low: Inefficient for solving combinatorial problems | High: Well-optimized, depending on class design | High: Recursive backtracking is efficient | Moderate: Event-driven execution introduces overhead |
+| **Reusability for similar problems**          | Low: Not reusable for other algorithmic challenges | Moderate: Reusable with some modifications to class design | High: Backtracking algorithm can be reused for similar puzzles | Moderate: Reusable but not optimal for combinatorial problems |
