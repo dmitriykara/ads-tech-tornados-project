@@ -13,11 +13,9 @@
 ```
 
 ## Project Description
-This project contains solutions to two classical software design problems using **Method 2: Main/Subroutine with Stepwise Refinement**:
-1. **Key Word in Context (KWIC)**
-2. **Eight Queens Puzzle**
-
-The chosen method satisfies project requirements, focusing on decomposition into modular subroutines to facilitate iterative development and efficient problem-solving.
+This project contains solutions to two classical software design problems:
+1. **Key Word in Context (KWIC)** using **Main/Subroutine**.
+2. **Eight Queens Puzzle** using **Abstract Data Types (ADT)**.
 
 ## Running the Programs
 ### KWIC Solution
@@ -28,7 +26,7 @@ The chosen method satisfies project requirements, focusing on decomposition into
 
 ### Eight Queens Solution
 1. Navigate to the `eight_queens` folder.
-2. Run `eight_queens.py` using `python eight_queens.py`.
+2. Run `eight_queens_adt.py` using `python eight_queens_adt.py`.
 3. The program will display all valid solutions to the Eight Queens puzzle.
 
 ## Running Tests
@@ -36,22 +34,21 @@ The chosen method satisfies project requirements, focusing on decomposition into
 - Run `test_kwic.py` using `python -m unittest kwic/test_kwic.py`.
 
 ### Eight Queens Tests
-- Run `test_eight_queens.py` using `python -m unittest eight_queens/test_eight_queens.py`.
+- Run `test_eight_queens_adt.py` using `python -m unittest eight_queens/test_eight_queens_adt.py`.
 
 ## Design Approach and Justification
-**Method 2: Main/Subroutine with Stepwise Refinement** was used to meet the project’s requirement to facilitate comparison. This method structures the code into a main function and a set of well-defined subroutines, making the design manageable and efficient for both problems.
+### KWIC: Main/Subroutine Method
+- **Justification**: The Main/Subroutine method was chosen for simplicity and efficiency. It clearly separates the text processing tasks into manageable functions, making the solution easy to follow and debug.
+- **Structure**: The KWIC solution consists of functions for reading input, generating circular shifts, sorting them, and outputting the results. The design is straightforward but less flexible for future extensions.
 
----
+### Eight Queens: Abstract Data Types (ADT)
+- **Justification**: Using ADT allows encapsulation of the board and queen logic, promoting better data management and a clean object-oriented approach. The QueenBoard class manages the state and provides methods for checking safety, placing, and removing queens.
+- **Structure**: The Eight Queens solution uses a recursive backtracking algorithm, leveraging the QueenBoard class to simplify board operations and ensure code clarity.
 
 ### Comments on Code, Solution, and Testing
-
-1. **Method Selection**: **Method 2: Main/Subroutine with Stepwise Refinement** was chosen because it allows clear decomposition of tasks and aligns with the requirement to enable a comparative study with other methods.
-2. **KWIC Implementation**: The KWIC solution processes input, generates circular shifts, sorts them, and outputs results. The subroutine-based design ensures a clear separation of tasks, making the code easy to follow but somewhat rigid for future extensions.
-3. **Eight Queens Implementation**: A recursive backtracking algorithm was used, with subroutines handling queen placement and safety checks. This design is well-suited for the problem, ensuring efficiency and ease of optimization.
-4. **Testing**: Unit tests were created for key functions in both problems using Python’s `unittest` framework. This helps ensure code correctness and facilitates future modifications.
-5. **Project Documentation**: The README.md file provides clear instructions for running the code and tests.
-
----
+- **Code**: Both solutions are well-structured, with clear separation of concerns. The KWIC code uses procedural programming, while the Eight Queens code adopts an object-oriented design.
+- **Solution**: The KWIC solution efficiently generates and sorts shifts, while the Eight Queens solution leverages recursion and ADT for optimal performance.
+- **Testing**: Unit tests are provided for key functionalities, ensuring correctness and making the solutions easier to maintain and extend.
 
 ### Comparison Tables
 
@@ -65,14 +62,12 @@ The chosen method satisfies project requirements, focusing on decomposition into
 | **Performance**                               | Moderate: Data copying between stages can impact performance | High: Efficient, but performance depends on class design | High: Efficient with a clear flow of execution | Moderate: Potential overhead from event-driven mechanisms |
 | **Reusability for similar problems**          | High: Modular design makes it adaptable | Moderate: Somewhat reusable but tied to specific implementations | Low: Designed specifically for this problem, hard to adapt | High: Easily reusable by modifying event triggers and listeners |
 
----
-
 #### Problem B: Eight Queens
 
 | **Criteria**                                | **Pipes-and-Filters**        | **Abstract Data Types**     | **Main/Subroutine**        | **Implicit Invocation**   |
 |---------------------------------------------|------------------------------|-----------------------------|----------------------------|---------------------------|
-| **Ease of changing implementation algorithm** | Low: Unsuitable for recursive problems, hard to modify | Moderate: Algorithm updates require structural changes | High: Easy to modify or extend the algorithm, e.g., adding more constraints | Moderate: Changes require updating event handlers, which can be manageable |
-| **Ease of changing data representation**      | Low: Poor fit for board representation | Moderate: Changes require updating related methods and attributes | Moderate: Board representation can be changed with minor updates to safety checks | Low: Limited flexibility as event-driven updates are not optimal for this problem |
-| **Ease of adding additional functions**       | Low: Difficult to add features like visualizations | Moderate: Possible but requires integrating into class structure | High: Additional features like visualizations can be added easily | Moderate: Additional event handlers possible but may introduce complexity |
-| **Performance**                               | Low: Inefficient for solving combinatorial problems | High: Well-optimized, depending on class design | High: Recursive backtracking is efficient | Moderate: Event-driven execution introduces overhead |
-| **Reusability for similar problems**          | Low: Not reusable for other algorithmic challenges | Moderate: Reusable with some modifications to class design | High: Backtracking algorithm can be reused for similar puzzles | Moderate: Reusable but not optimal for combinatorial problems |
+| **Ease of changing implementation algorithm** | Low: Unsuitable for recursive problems, hard to modify | High: Easy to modify or extend board operations | High: Straightforward to update or extend, ideal for backtracking | Moderate: Requires updating event handlers, which can be manageable |
+| **Ease of changing data representation**      | Low: Poor fit for board representation | High: Encapsulated in classes, easy to modify | Moderate: Board representation changes require more code updates | Low: Limited flexibility, event-driven mechanisms aren't ideal for this problem |
+| **Ease of adding additional functions**       | Low: Difficult to add features like visualizations | High: New methods can be easily added to the class | High: Straightforward to add features like printing solutions | Moderate: Possible but may add complexity |
+| **Performance**                               | Low: Inefficient for solving combinatorial problems | High: Optimized with object-oriented design | High: Efficient recursive backtracking | Moderate: Event-driven execution introduces some overhead |
+| **Reusability for similar problems**          | Low: Not reusable for other algorithmic challenges | High: Encapsulation makes it adaptable | High: Well-suited for similar recursive problems | Moderate: Limited reusability in a non-event-driven context |

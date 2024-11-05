@@ -1,46 +1,40 @@
-def pipe(*functions):
-    def apply_pipe(data):
-        for function in functions:
-            data = function(data)
-        return data
-    return apply_pipe
+from typing import List
 
 
-def queens(data):
-    yield from place_queen(0, [])
+def main_eight_queens() -> None:
+    board = [-1] * 8
+    solve_queens(board, 0)
 
 
-def place_queen(row, board):
+def solve_queens(board: List[int], row: int) -> None:
     if row == 8:
-        yield board
-    else:
-        for column in range(8):
-            if is_safe(row, column, board):
-                yield from place_queen(row + 1, board + [column])
+        print_board(board)
+        return
+
+    for col in range(8):
+        if is_safe(board, row, col):
+            board[row] = col
+            solve_queens(board, row + 1)
+            board[row] = -1  # Backtrack
 
 
-def is_safe(row, column, board):
-    for r, c in enumerate(board):
-        if c == column or \
-           c - column == r - row or \
-           c - column == row - r:
+def is_safe(board: List[int], row: int, col: int) -> bool:
+    for i in range(row):
+        if board[i] == col or \
+           board[i] - i == col - row or \
+           board[i] + i == col + row:
             return False
     return True
 
 
-def format_board(solutions):
-    for solution in solutions:
-        board = []
-        for col in solution:
-            line = ['.'] * 8
-            line[col] = 'Q'
-            board.append(''.join(line))
-        yield board
+def print_board(board: List[int]) -> None:
+    for row in range(8):
+        line = ""
+        for col in range(8):
+            line += "Q " if board[row] == col else ". "
+        print(line)
+    print("\n")
 
 
-def eight_queens_solutions():
-    pipeline = pipe(
-        queens,
-        format_board
-    )
-    return list(pipeline(None))
+if __name__ == "__main__":
+    main_eight_queens()
