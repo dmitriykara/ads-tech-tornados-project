@@ -1,6 +1,43 @@
 ## Launch
 Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.google/ and upload the file.
 
+## Design Approach and Justification
+Key Word in Context (KWIC)
+Method 1: Abstract Data Types
+The Abstract Data Types (ADT) method uses object-oriented principles to encapsulate functionality and data for the KWIC problem. Key classes include:
+
+TextProcessor:
+
+Cleans and prepares text for indexing by removing stop words and splitting text into words.
+Context:
+
+Stores the context of keywords, including surrounding words and page number, and formats output for display.
+KWICIndex:
+
+Manages the KWIC index by storing keywords and their contexts. It generates index entries by processing text through the TextProcessor.
+KWICDisplay:
+
+Handles the display of the KWIC index in a user-friendly format.
+The design promotes encapsulation, reusability, and separation of concerns, making it easier to maintain and adapt the system.
+
+Eight Queens (8Q)
+Method 3: Pipes-and-Filters
+The Pipes-and-Filters method for the Eight Queens problem structures the solution as a series of independent processing stages:
+
+NQueens Class:
+
+Implements the N Queens solver, handling initialization, queen placement, and solution validation through a recursive method.
+Methods:
+
+initialize: Sets up the board.
+place_queens: Recursively places queens, storing valid configurations.
+is_safe: Checks if a queen can be placed in a specified position.
+display_solutions: Formats and prints all found solutions.
+This architecture allows for clear data flow through distinct steps, enhancing modularity and flexibility, with the potential for parallel processing and easy integration of new filters if needed.
+
+
+
+
 ## Comparison with the work of Dmitry Kara
 
 ### Problem A. Key Word in Context (KWIC)
