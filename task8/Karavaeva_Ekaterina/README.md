@@ -3,9 +3,9 @@ Download the file Problems_A,_B.ipynb, then go to Google Colab https://colab.goo
 
 ## Design Approach and Justification
 
-# Key Word in Context (KWIC)
+### Key Word in Context (KWIC)
 
-## Method 1: Abstract Data Types
+### Method 1: Abstract Data Types
 
 The Abstract Data Types (ADT) method uses object-oriented principles to encapsulate functionality and data for the KWIC problem. Key classes include:
 
@@ -25,9 +25,9 @@ The design promotes encapsulation, reusability, and separation of concerns, maki
 
 ---
 
-# Eight Queens (8Q)
+### Eight Queens (8Q)
 
-## Method 3: Pipes-and-Filters
+#### Method 3: Pipes-and-Filters
 
 The Pipes-and-Filters method for the Eight Queens problem structures the solution as a series of independent processing stages:
 
