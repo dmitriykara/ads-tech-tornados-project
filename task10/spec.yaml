@@ -1,0 +1,550 @@
+openapi: 3.0.1
+info:
+  title: Policy Management API
+  description: API for managing policies like Allocation, Scaling, and HealthCheck
+  version: 1.0.0
+
+paths:
+  /policies:
+    post:
+      summary: Create a new policy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Policy'
+      tags:
+      - policies
+      responses:
+        '201':
+          description: Policy created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+
+  /policies/{id}:
+    get:
+      summary: Get a policy by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+      - policies
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+
+    put:
+      summary: Update a policy
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Policy'
+      tags:
+      - policies
+      responses:
+        '200':
+          description: Policy updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Policy'
+
+    delete:
+      summary: Delete a policy by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+      - policies
+      responses:
+        '204':
+          description: Policy deleted successfully
+
+  /policies/{id}/apply:
+    post:
+      summary: Apply a policy by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+      - policies
+      responses:
+        '200':
+          description: Policy applied successfully
+  /nodes:
+    get:
+      summary: List all nodes
+      tags:
+      - node-manager
+      responses:
+        '200':
+          description: List of nodes retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Node'
+
+  /nodes/{nodeId}:
+    get:
+      summary: Retrieve a node by ID
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+      - node-manager
+      responses:
+        '200':
+          description: Node retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '404':
+          description: Node not found
+
+  /nodes/{nodeId}/pods:
+    post:
+      summary: Create and allocate a new pod in a node
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pod'
+      tags:
+      - node-manager
+      responses:
+        '201':
+          description: Pod created and allocated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pod'
+     
+  /nodes/{nodeId}/pods/{podId}:
+    delete:
+      summary: Destroy a pod in a node
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: podId
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+      - node-manager
+      responses:
+        '204':
+          description: Pod destroyed successfully
+        '404':
+          description: Node or pod not found
+
+    put:
+      summary: Reallocate a pod in a node
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: podId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pod'
+      tags:
+      - node-manager
+      responses:
+        '200':
+          description: Pod reallocated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pod'
+        '404':
+          description: Node or pod not found
+
+  /nodes/{nodeId}/policy-update:
+    post:
+      summary: Push a signal about a policy update
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                policyId:
+                  type: string
+                  description: The ID of the policy being updated
+      tags:
+      - node-manager
+      responses:
+        '200':
+          description: Policy update signal sent successfully
+        '404':
+          description: Node not found
+          
+  /events:
+    post:
+      tags:
+        - observability
+      summary: Handle a new monitoring event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonitoringEvent'
+      responses:
+        '201':
+          description: Monitoring event handled successfully
+
+  /events/{eventId}:
+    get:
+      tags:
+        - observability
+      summary: Retrieve a monitoring event by ID
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Monitoring event retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitoringEvent'
+        '404':
+          description: Monitoring event not found
+
+  /observability-systems:
+    post:
+      tags:
+        - observability
+      summary: Create a new observability system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservabilitySystem'
+      responses:
+        '201':
+          description: Observability system created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySystem'
+
+    get:
+      tags:
+        - observability
+      summary: List all observability systems
+      responses:
+        '200':
+          description: List of observability systems retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObservabilitySystem'
+
+  /observability-systems/{observabilitySystemId}:
+    get:
+      tags:
+        - observability
+      summary: Retrieve an observability system by ID
+      parameters:
+        - name: observabilitySystemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Observability system retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySystem'
+        '404':
+          description: Observability system not found
+
+    put:
+      tags:
+        - observability
+      summary: Update an observability system
+      parameters:
+        - name: observabilitySystemId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObservabilitySystem'
+      responses:
+        '200':
+          description: Observability system updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObservabilitySystem'
+        '404':
+          description: Observability system not found
+
+    delete:
+      tags:
+        - observability
+      summary: Delete an observability system
+      parameters:
+        - name: observabilitySystemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Observability system deleted successfully
+        '404':
+          description: Observability system not found
+  
+  /balancer/apply:
+    post:
+      tags:
+        - balancer
+      summary: Применить алгоритм балансировки
+      description: Выполняет алгоритм балансировки нагрузки на основе текущих данных.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BalancingAlgorithmRequest'
+      responses:
+        '200':
+          description: Алгоритм успешно выполнен.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalancingResult'
+        '400':
+          description: Некорректный запрос.
+        '500':
+          description: Внутренняя ошибка сервера.
+
+  /balancer/events/process:
+    post:
+      tags:
+        - balancer
+      summary: Обработать событие
+      description: Принимает событие и выполняет соответствующие действия.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyEvent'
+      responses:
+        '200':
+          description: Событие успешно обработано.
+        '400':
+          description: Некорректное событие.
+        '500':
+          description: Внутренняя ошибка сервера.
+  
+  /balancer/events/send:
+    post:
+      tags:
+        - balancer
+      summary: Послать событие об обновлении
+      description: Посылает событие и выполняет соответствующие действия.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PolicyEvent'
+      responses:
+        '200':
+          description: Событие успешно обработано.
+        '400':
+          description: Некорректное событие.
+        '500':
+          description: Внутренняя ошибка сервера.
+
+
+components:
+  schemas:
+    PolicyEvent:
+      type: object
+      properties:
+        eventType:
+          type: string
+          description: Тип события.
+          enum: [PolicyApplied, PolicyUpdated]
+        details:
+          type: object
+          additionalProperties:
+            type: string
+          description: Детали события.
+
+    BalancingAlgorithmRequest:
+      type: object
+      properties:
+        algorithmType:
+          type: string
+          description: Тип алгоритма балансировки.
+          enum: [RoundRobin, LeastConnections, Random]
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+          description: Дополнительные параметры алгоритма.
+
+    BalancingResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Успешно ли завершена балансировка.
+        details:
+          type: string
+          description: Подробности выполнения алгоритма.
+    MonitoringEvent:
+      type: object
+      required:
+        - id
+        - payload
+        - observabilitySystemId
+      properties:
+        id:
+          type: string
+        payload:
+          type: string
+        observabilitySystemId:
+          type: string
+
+    ObservabilitySystem:
+      type: object
+      required:
+        - id
+        - monitoringEventIds
+        - alertsIds
+      properties:
+        id:
+          type: string
+        monitoringEventIds:
+          type: array
+          items:
+            type: string
+        alertsIds:
+          type: array
+          items:
+            type: string
+
+    Node:
+      type: object
+      required:
+        - id
+        - title
+        - resources
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        resources:
+          type: object
+          additionalProperties: true
+        pods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pod'
+
+    Pod:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        resources:
+          type: object
+          additionalProperties: true
+      required:
+        - id
+        - containerIds
+        - resources
+        - status
+        - spec
+    Policy:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [healthcheck, allocation, scaling]
+        spec:
+          type: object
+          additionalProperties: true
