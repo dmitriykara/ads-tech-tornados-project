@@ -1,0 +1,34 @@
+server:
+  port: 8080                # Порт, на котором будет запущен HTTP-сервер
+  read_timeout: 15s         # Тайм-аут на чтение запроса
+  write_timeout: 15s        # Тайм-аут на запись ответа
+  idle_timeout: 60s         # Тайм-аут простоя соединения
+
+database:
+  host: localhost           # Хост базы данных
+  port: 5432                # Порт базы данных
+  user: balancer_user       # Имя пользователя
+  password: balancer_pass   # Пароль
+  name: balancer_db         # Название базы данных
+  ssl_mode: disable         # Режим SSL (disable для локальной разработки)
+
+logging:
+  level: info               # Уровень логирования (debug, info, warn, error)
+  format: json              # Формат логов (json или text)
+
+balancer:
+  default_algorithm: RoundRobin # Алгоритм балансировки по умолчанию
+  max_retries: 3                 # Максимальное количество попыток обработки
+
+observability:
+  enabled: true                # Включить ли observability
+  metrics_endpoint: /metrics   # Эндпоинт для метрик Prometheus
+  tracing_enabled: false       # Включить ли распределенный трейсинг
+
+events:
+  retry_interval: 5s           # Интервал между повторными попытками
+  max_retry_count: 5           # Максимальное количество повторных попыток
+
+policy:
+  default_healthcheck_interval: 30s # Интервал проверки здоровья по умолчанию
+  max_policy_lifetime: 86400s      # Максимальный срок действия политики (в секундах)
