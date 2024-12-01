@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-server-pod
+  labels:
+    app: go-server
+spec:
+  containers:
+    - name: go-server
+      image: daniilmikulik/asd-project:latest # Replace with your actual image
+      ports:
+        - containerPort: 8080
+      # Optionally, specify resource limits and requests
+      resources:
+        limits:
+          memory: "256Mi"
+          cpu: "200m"
+        requests:
+          memory: "128Mi"
+          cpu: "100m"
