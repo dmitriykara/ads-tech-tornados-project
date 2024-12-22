@@ -30,6 +30,10 @@ func NewHTTPPublisher(url string, client *http.Client, logger *utils.Logger) *HT
 
 // Publish отправляет событие через HTTP POST
 func (hp *HTTPPublisher) Publish(event Event) error {
+	if event.ID == "" {
+		return nil
+	}
+
 	jsonData, err := json.Marshal(event)
 	if err != nil {
 		hp.logger.Error("Error marshaling event: " + err.Error())

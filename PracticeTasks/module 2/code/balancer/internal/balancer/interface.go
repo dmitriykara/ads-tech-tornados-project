@@ -19,4 +19,5 @@ type BalancerRepository interface {
 type AlgorithmService interface {
 	// ApplyAlgorithm applies the balancing algorithm based on the provided request.
 	ApplyAlgorithm(request BalancingAlgorithmRequest) (BalancingResult, error)
+	GetAlgorithm() BalancingAlgorithmRequest
 }
