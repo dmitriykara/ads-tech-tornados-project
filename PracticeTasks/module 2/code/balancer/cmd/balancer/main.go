@@ -53,12 +53,12 @@ func main() {
 
 	// Define routes
 	r.HandleFunc("/balancer/apply", balancerHandler.ApplyBalancerAlgorithm).Methods("POST")
-	r.HandleFunc("/balancer/events/", eventHandler.HandleEvent).Methods("POST")
+	r.HandleFunc("/balancer/events", eventHandler.HandleEvent).Methods("POST")
 	r.HandleFunc("/status", statusHandler.CheckHealth)
 
 	// Start the HTTP server
 	server := &http.Server{
-		Addr:         fmt.Sprintf(":%s", viper.GetString("server.port")),
+		Addr:         fmt.Sprintf("0.0.0.0:%s", viper.GetString("server.port")),
 		Handler:      r,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 10 * time.Second,
