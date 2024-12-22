@@ -53,7 +53,7 @@ func main() {
 
 	// Define routes
 	r.HandleFunc("/balancer/apply", balancerHandler.ApplyBalancerAlgorithm).Methods("POST")
-	r.HandleFunc("/balancer/events/", eventHandler.HandleEvent).Methods("POST")
+	r.HandleFunc("/balancer/events", eventHandler.HandleEvent).Methods("POST")
 	r.HandleFunc("/status", statusHandler.CheckHealth)
 
 	// Start the HTTP server

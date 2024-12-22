@@ -10,7 +10,7 @@ spec:
     - name: go-server
       image: daniilmikulik/asd-project:latest # Replace with your actual image
       ports:
-        - containerPort: 8080
+        - containerPort: 80
       # Optionally, specify resource limits and requests
       resources:
         limits:
