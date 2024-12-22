@@ -14,8 +14,5 @@ COPY . .
 # Build the Go application
 RUN go build -o ttb-service ./cmd/balancer
 
-# Expose the port the app will listen on (adjust if necessary)
-EXPOSE 8080
-
 # Command to run the application
 CMD ["./ttb-service"]

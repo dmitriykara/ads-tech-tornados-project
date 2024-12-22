@@ -58,7 +58,7 @@ func main() {
 
 	// Start the HTTP server
 	server := &http.Server{
-		Addr:         fmt.Sprintf(":%s", viper.GetString("server.port")),
+		Addr:         fmt.Sprintf("0.0.0.0:%s", viper.GetString("server.port")),
 		Handler:      r,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 10 * time.Second,
