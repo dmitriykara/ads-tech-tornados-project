@@ -392,6 +392,24 @@ paths:
         '500':
           description: Внутренняя ошибка сервера.
 
+  /balancer/status:
+    get:
+      tags:
+        - balancer
+      summary: Получить текущий алгоритм балансировки
+      description: Возвращает активный алгоритм балансировки нагрузки.
+      responses:
+        '200':
+          description: Успешно
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalancingAlgorithmRequest'
+        '400':
+          description: Некорректный запрос.
+        '500':
+          description: Внутренняя ошибка сервера.
+
   /balancer/events/process:
     post:
       tags:
