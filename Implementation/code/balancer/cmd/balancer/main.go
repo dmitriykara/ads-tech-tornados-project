@@ -52,10 +52,10 @@ func main() {
 	r := mux.NewRouter()
 
 	// Define routes
-	r.HandleFunc("/balancer/apply", balancerHandler.ApplyBalancerAlgorithm).Methods("POST")
-	r.HandleFunc("/balancer/status", balancerHandler.GetBalancerAlgorithm).Methods("GET")
-	r.HandleFunc("/balancer/events", eventHandler.HandleEvent).Methods("POST")
-	r.HandleFunc("/status", statusHandler.CheckHealth)
+	r.HandleFunc("/tech-tornadoes-project/go-server/balancer/apply", balancerHandler.ApplyBalancerAlgorithm).Methods("POST")
+	r.HandleFunc("/tech-tornadoes-project/go-server/balancer/status", balancerHandler.GetBalancerAlgorithm).Methods("GET")
+	r.HandleFunc("/tech-tornadoes-project/go-server/balancer/events", eventHandler.HandleEvent).Methods("POST")
+	r.HandleFunc("/tech-tornadoes-project/go-server/status", statusHandler.CheckHealth)
 
 	// Start the HTTP server
 	server := &http.Server{
